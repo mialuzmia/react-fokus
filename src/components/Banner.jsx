@@ -4,10 +4,10 @@ import bannerImg from "../assets/imagens/foco.png";
 
 const Banner = () => {
   return (
-    <section class={styles.banner__container}>
+    <section className={styles.banner__container}>
       <h1 >
         Otimize sua produtividade,<br/>
-        <strong class="app__title-strong">mergulhe no que importa.</strong>
+        <strong>mergulhe no que importa.</strong>
       </h1>
   
       <img src={bannerImg} alt="" />
