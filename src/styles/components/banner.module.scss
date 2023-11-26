@@ -1,0 +1,24 @@
+.banner__container{
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+
+  h1{
+    line-height: 150%;
+    font-size: 5.2rem;
+    font-style: normal;
+    color: var(--color-secondary);
+    font-weight: 200;
+    max-width: 46rem;
+
+    strong{
+      font-weight: 600;
+      font-size: 5.2rem;
+    
+    }
+  }
+}

@@ -1,9 +1,12 @@
 import styles from '../styles/components/header.module.scss';
+import logo from '../assets/imagens/logo.png';
 
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <header className={styles.header__container}>
+      <img src={logo} alt="logo escrita fokus" />
+    </header>
   )
 }
 
