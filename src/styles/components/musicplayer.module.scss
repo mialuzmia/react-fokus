@@ -4,6 +4,7 @@
 .toggle__container{
   @include flexCenter;
   gap: 1.5rem;
+  margin-top: 2rem;
 
   p{
     font-size: 1.8rem;

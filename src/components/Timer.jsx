@@ -1,31 +1,36 @@
 import styles from "../styles/components/timer.module.scss";
+import play from '../assets/imagens/play_arrow.png'
 
-import  Countdown  from 'react-countdown';
+
+import useCountdownTimer from '../hooks/useCountdownTimer';
+import MusicPlayer from "./MusicPlayer";
+import { useState } from "react";
+import useMusicPlayer from "../context/MusicPlayerContext";
 
 
-const Timer = ({ mode, onComplete }) => {
+
+const Timer = ({ mode }) => {
+
+  const timestamp = mode === 'focus' ? 25 * 60: mode === 'short' ? 5 * 60 : 15 * 60;
+
+
+  const { minutes, seconds, toggleTimer,isRunning } = useCountdownTimer(timestamp); 
   return (
     <div className={styles.timer__container}>
-      <Countdown
-        date={Date.now() + (mode === 'focus' ? 25 * 60 * 1000 : mode === 'short' ? 5 * 60 * 1000 : 15 * 60 * 1000)}
-        onComplete={onComplete}
+      <span>
+        {minutes}:{seconds < 10 ? '0' : ''}{seconds}
+      </span> 
 
-        renderer={({ minutes, seconds, completed }) => {
-          if (completed) {
-            onComplete();
-            return <span>00:00</span>;
-          } else {
-           
-            return (
-              <span>
-                {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
-              </span>
-            );
-          }
-        }}
+      <MusicPlayer />
 
-      />
+      {/* <button onClick={toggleTimer}>Start/Pause/Resume</button> */}
 
+      <div className={styles.timer__playButtonContainer}>
+          <button onClick={toggleTimer}>
+            <img src={play} alt="simbolo de play" />
+            <span>{isRunning ? 'Pausar' : 'Começar'}</span>
+          </button>
+        </div>
     </div>
 
   )

@@ -49,23 +49,3 @@
   }
 }
 
-.card__playButtonContainer{
-  @include flexCenter;
-
-  button{
-    padding: 0.8rem;
-    width: 12rem;
-    border: none;
-    cursor: pointer;
-    outline: inherit;
-    border-radius: 3.2rem;
-    background: $button-gradient;
-    margin-top: 3.2rem;
-    @include flexCenter;
-    gap: 1rem;
-  }
-  
-  span{
-    font-size: 1.8rem;
-  }
-}

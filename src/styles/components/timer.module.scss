@@ -1,14 +1,42 @@
 @use '../mixins' as *;
+@use '../variables' as *;
 
 .timer__container{
   width: 80%;
   margin: 2rem auto;
   @include flexCenter;
+  flex-direction: column;
 
   span{
-    font-family: 'Unbounded', cursive;
+  font-family: 'Unbounded', cursive;
 
     font-size: 11.2rem;
     text-align: center;
+  }
+
+  button{
+    color: black;
+  }
+}
+
+
+.timer__playButtonContainer{
+  @include flexCenter;
+
+  button{
+    padding: 0.8rem ;
+    width: 15rem;
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+    border-radius: 3.2rem;
+    background: $button-gradient;
+    margin-top: 3.2rem;
+    @include flexCenter;
+    gap: 1rem;
+  }
+  
+  span{
+    font-size: 1.5rem;
   }
 }

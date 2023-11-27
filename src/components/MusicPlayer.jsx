@@ -1,24 +1,14 @@
 import styles from "../styles/components/musicplayer.module.scss"
 
-import useSound from "use-sound";
 
-import music from "../assets/sons/luna-rise-part-one.mp3";
-import { useEffect, useState } from "react";
+import useMusicPlayer from "../context/MusicPlayerContext";
+import { useEffect } from "react";
+
 
 
 const MusicPlayer = () => {  
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [play, { stop }] = useSound(music, { loop: true });
-
-  const handleTogglePlay = () => {
-    if (isPlaying) {
-      stop();
-    } else {
-      play();
-    }
-    setIsPlaying((prevState) => !prevState);
-  };
-
+  const { isPlaying, handleTogglePlay } = useMusicPlayer();
+ 
   useEffect(() => {
     console.log(isPlaying);
     

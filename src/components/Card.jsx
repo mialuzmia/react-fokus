@@ -7,10 +7,13 @@ import useMode from '../context/ModeContext';
 
 import Timer from './Timer';
 import MusicPlayer from './MusicPlayer';
+import useCountdownTimer from '../hooks/useCountdownTimer';
 
 const Card = () => {
-  
+
+
   const [activeButtonIndex, setActiveButtonIndex] = useState(0);
+  const [isTimerRunning, setIsTimerRunning] = useState(false); 
 
   const { mode, changeMode} = useMode();
 
@@ -19,26 +22,25 @@ const Card = () => {
     
   }, [mode]);
 
-  const handleButtonClick = (index) => {
+  const handleModeButtonClick = (index) => {
     setActiveButtonIndex(index);
 
     switch (index) {
       case 0:
-        // setPomodoroTime(25);
         changeMode('focus');
         break;
       case 1:
-        // setPomodoroTime(5);
         changeMode('short');
         break;
       case 2:
-        // setPomodoroTime(15);
         changeMode('long');
         break;
       default:
         break;
     }
   };
+
+
 
   return (
     <section className={styles.card__container}>
@@ -48,7 +50,7 @@ const Card = () => {
        {[0, 1, 2].map((index) => (
         <li className={index === activeButtonIndex ? 'active' : ''} key={index}>
           <button
-            onClick={() => handleButtonClick(index)}
+            onClick={() => handleModeButtonClick(index)}
           >
             {index === 0 ? 'Foco' : index === 1 ? 'Descanso curto' : 'Descanso longo'}
           </button>
@@ -57,24 +59,17 @@ const Card = () => {
           
       </ul>
 
-     
       <Timer 
         mode={mode}
-        onComplete={() => {
-        // setActiveButtonIndex(0); // Reset the active button to focus
-        // changeMode('focus'); // Switch to the next mode
-        }}
+        key={mode}
+  
       />
 
-      <MusicPlayer />
+      {/* <MusicPlayer /> */}
 
-        <div className={styles.card__playButtonContainer}>
-          <button>
-            <img className="app__card-primary-butto-icon" src={play} alt="simbolo de play" />
-            <span>Começar</span>
-          </button>
-        </div>
+       
 
+       
     </section>
   )
 }
