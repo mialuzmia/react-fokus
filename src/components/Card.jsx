@@ -3,36 +3,60 @@ import play from '../assets/imagens/play_arrow.png'
 
 import { useState } from 'react';
 import { useEffect } from 'react';
+import useMode from '../context/ModeContext';
 
 const Card = () => {
-
+  const [activeButtonIndex, setActiveButtonIndex] = useState(0);
   const [isChecked, setIsChecked] = useState(false);
+
+  const { mode, changeMode} = useMode();
 
   const handleClick = () => {
     setIsChecked(!isChecked);
-    // console.log(isChecked);
-  }
-
-  useEffect(() => {
-    console.log(isChecked);
-
   
+  }
+  
+  useEffect(() => {
+    console.log(mode);
     
-  }, [isChecked]);
+  }, [mode]);
+
+  const handleButtonClick = (index) => {
+    setActiveButtonIndex(index);
+
+    switch (index) {
+      case 0:
+        // setPomodoroTime(25);
+        changeMode('focus');
+        break;
+      case 1:
+        // setPomodoroTime(5);
+        changeMode('short');
+        break;
+      case 2:
+        // setPomodoroTime(15);
+        changeMode('long');
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <section className={styles.card__container}>
       
        <ul className={styles.card__buttonsList}>
-          <li className={styles.active}>
-              <button  type='button'>Foco</button>
-          </li>
-          <li >
-              <button type='button'>Descanso curto</button>
-          </li>
-          <li>
-              <button type='button'>Descanso longo</button>
-          </li>
+
+       {[0, 1, 2].map((index) => (
+        <li className={index === activeButtonIndex ? 'active' : ''} key={index}>
+          <button
+            onClick={() => handleButtonClick(index)}
+          >
+            {index === 0 ? 'Focus' : index === 1 ? 'Short Break' : 'Long Break'}
+          </button>
+        </li>
+      ))}
+          
         </ul>
 
         <div id="timer" className="app__card-timer"></div>

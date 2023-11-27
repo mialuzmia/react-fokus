@@ -30,6 +30,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Unbounded', cursive;
 }
 
+.active{
+  border-radius: 0.8rem;
+  background: $royal-blue;
+  font-weight: 600;
+}
 
 
 /* To hide the checkbox */

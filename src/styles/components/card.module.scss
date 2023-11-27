@@ -37,11 +37,7 @@
   }
 }
 
-.active{
-  border-radius: 0.8rem;
-  background: $royal-blue;
-  font-weight: 600;
-}
+
 
 .toggle__container{
   @include flexCenter;
