@@ -1,0 +1,14 @@
+@use '../mixins' as *;
+
+.timer__container{
+  width: 80%;
+  margin: 2rem auto;
+  @include flexCenter;
+
+  span{
+    font-family: 'Unbounded', cursive;
+
+    font-size: 11.2rem;
+    text-align: center;
+  }
+}

@@ -5,17 +5,15 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import useMode from '../context/ModeContext';
 
+import Timer from './Timer';
+import MusicPlayer from './MusicPlayer';
+
 const Card = () => {
+  
   const [activeButtonIndex, setActiveButtonIndex] = useState(0);
-  const [isChecked, setIsChecked] = useState(false);
 
   const { mode, changeMode} = useMode();
 
-  const handleClick = () => {
-    setIsChecked(!isChecked);
-  
-  }
-  
   useEffect(() => {
     console.log(mode);
     
@@ -45,27 +43,30 @@ const Card = () => {
   return (
     <section className={styles.card__container}>
       
-       <ul className={styles.card__buttonsList}>
+      <ul className={styles.card__buttonsList}>
 
        {[0, 1, 2].map((index) => (
         <li className={index === activeButtonIndex ? 'active' : ''} key={index}>
           <button
             onClick={() => handleButtonClick(index)}
           >
-            {index === 0 ? 'Focus' : index === 1 ? 'Short Break' : 'Long Break'}
+            {index === 0 ? 'Foco' : index === 1 ? 'Descanso curto' : 'Descanso longo'}
           </button>
         </li>
-      ))}
+        ))}
           
-        </ul>
+      </ul>
 
-        <div id="timer" className="app__card-timer"></div>
+     
+      <Timer 
+        mode={mode}
+        onComplete={() => {
+        // setActiveButtonIndex(0); // Reset the active button to focus
+        // changeMode('focus'); // Switch to the next mode
+        }}
+      />
 
-        <div className={styles.toggle__container}>
-          <input type="checkbox" id="checkboxInput" onClick={handleClick} />
-          <label htmlFor="checkboxInput" className="toggleSwitch"></label>
-          <p>Música</p>
-        </div>  
+      <MusicPlayer />
 
         <div className={styles.card__playButtonContainer}>
           <button>

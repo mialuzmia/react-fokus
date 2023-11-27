@@ -1,0 +1,12 @@
+@use '../mixins' as *;
+
+
+.toggle__container{
+  @include flexCenter;
+  gap: 1.5rem;
+
+  p{
+    font-size: 1.8rem;
+    font-family: Montserrat;
+  }
+}
