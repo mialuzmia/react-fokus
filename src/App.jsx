@@ -5,12 +5,16 @@ import Banner from './components/Banner';
 import Card from './components/Card';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import useMode from './context/ModeContext';
 
 function App() {
-
+  const { mode } = useMode();
 
   return (
-      <main className={styles.app__container}>
+      <main 
+        className={`${styles.app__container} 
+        ${mode === 'focus' ? styles.focus : mode === 'short' ? styles.short : styles.long}`}
+      >
         <Header />
         <Banner />
         <MusicPlayerProvider>

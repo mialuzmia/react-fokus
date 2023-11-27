@@ -10,5 +10,19 @@
   min-height: 100vh;
   min-width: 100%;
 
+  &.focus{
+  background: url(../../assets/imagens/pattern.png),$main-bg-purple; 
+
+  }
+
+  &.short{
+    background: url(../../assets/imagens/pattern.png),$main-bg-green; 
+  
+  }
+
+  &.long{
+    background: url(../../assets/imagens/pattern.png),$main-bg-blue; 
+  
+  }
   
 }
