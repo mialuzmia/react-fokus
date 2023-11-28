@@ -1,8 +1,8 @@
 import styles from '../styles/components/banner.module.scss';
 
-import imgFocus from '../assets/imagens/foco.png';
-import imgShort from '../assets/imagens/descanso-curto.png';
-import imgLong from '../assets/imagens/descanso-longo.png';
+import imgFocus from '../assets/imagens/foco-compressed.png';
+import imgShort from '../assets/imagens/descanso-curto-compressed.png';
+import imgLong from '../assets/imagens/descanso-longo-compressed.png';
 
 import useMode from '../context/ModeContext';
 

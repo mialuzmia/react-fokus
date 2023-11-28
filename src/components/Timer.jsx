@@ -1,12 +1,10 @@
 import styles from "../styles/components/timer.module.scss";
 import play from '../assets/imagens/play_arrow.png'
+import pause from '../assets/imagens/pause.png'
 
 
 import useCountdownTimer from '../hooks/useCountdownTimer';
 import MusicPlayer from "./MusicPlayer";
-import { useState } from "react";
-import useMusicPlayer from "../context/MusicPlayerContext";
-
 
 
 const Timer = ({ mode }) => {
@@ -27,7 +25,7 @@ const Timer = ({ mode }) => {
 
       <div className={styles.timer__playButtonContainer}>
           <button onClick={toggleTimer}>
-            <img src={play} alt="simbolo de play" />
+            <img src={isRunning ? pause : play} alt="simbolo de play" />
             <span>{isRunning ? 'Pausar' : 'Começar'}</span>
           </button>
         </div>
