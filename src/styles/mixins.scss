@@ -4,3 +4,9 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin respond-to($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}

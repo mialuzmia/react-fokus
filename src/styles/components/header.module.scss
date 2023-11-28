@@ -6,4 +6,9 @@
 
   padding: 2.5rem 0;
   
+  @include respond-to(600px){
+    img{
+      max-width: 30%;
+    }
+  }
 }
