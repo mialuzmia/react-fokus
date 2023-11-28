@@ -1,0 +1,17 @@
+@use '../mixins' as *;
+
+.footer__container{
+  width: 100%;
+  text-align: center;
+  @include flexCenter;
+  flex-direction: column;
+  gap: .5rem;
+
+  background-color: #010B15;
+  padding: 2rem 0;
+  
+  p{
+    color: #B6B6B6CC;
+    font-size: 1.4rem;
+  }
+}
