@@ -4,6 +4,7 @@ import useSound from "use-sound";
 
 import playSound from '../assets/sons/play.wav';
 import pauseSound from '../assets/sons/pause.mp3';
+import alarm from "../assets/sons/alarm.mp3"
 
 
 const useCountdownTimer = (timestamp) => {
@@ -13,6 +14,7 @@ const useCountdownTimer = (timestamp) => {
 
   const [playPlaySound] = useSound(playSound);
   const [playPauseSound] = useSound(pauseSound);
+  const [playAlarm] = useSound(alarm)
 
 
   const toggleTimer = () => {
@@ -40,6 +42,8 @@ const useCountdownTimer = (timestamp) => {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
       setIsRunning(false);
+
+      playAlarm();
     }
   }, [timeLeft]);
 

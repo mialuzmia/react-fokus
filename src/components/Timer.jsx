@@ -2,17 +2,24 @@ import styles from "../styles/components/timer.module.scss";
 import play from '../assets/imagens/play_arrow.png'
 import pause from '../assets/imagens/pause.png'
 
-
 import useCountdownTimer from '../hooks/useCountdownTimer';
 import MusicPlayer from "./MusicPlayer";
 
-
-const Timer = ({ mode }) => {
-
-  const timestamp = mode === 'focus' ? 25 * 60: mode === 'short' ? 5 * 60 : 15 * 60;
+import { useEffect } from "react";
 
 
+const Timer = ({ mode, onTimerEnd }) => {
+
+  const timestamp = mode === 'focus' ? 45 : mode === 'short' ? 10 : 30;
   const { minutes, seconds, toggleTimer,isRunning } = useCountdownTimer(timestamp); 
+
+  useEffect(() => {
+    if (minutes === 0 && seconds === 0) {
+      // Timer reached zero, handle mode change
+      onTimerEnd();
+    }
+  }, [minutes, seconds, onTimerEnd]);
+
   return (
     <div className={styles.timer__container}>
       <span>
@@ -20,8 +27,6 @@ const Timer = ({ mode }) => {
       </span> 
 
       <MusicPlayer />
-
-      {/* <button onClick={toggleTimer}>Start/Pause/Resume</button> */}
 
       <div className={styles.timer__playButtonContainer}>
           <button onClick={toggleTimer}>

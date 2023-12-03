@@ -1,26 +1,23 @@
 import styles from '../styles/components/card.module.scss';
-import play from '../assets/imagens/play_arrow.png'
+
 
 import { useState } from 'react';
 import { useEffect } from 'react';
 import useMode from '../context/ModeContext';
 
 import Timer from './Timer';
-import MusicPlayer from './MusicPlayer';
-import useCountdownTimer from '../hooks/useCountdownTimer';
 
 const Card = () => {
 
-
   const [activeButtonIndex, setActiveButtonIndex] = useState(0);
-  const [isTimerRunning, setIsTimerRunning] = useState(false); 
+  const [completedPomos, setCompletedPomos] = useState(0);
 
   const { mode, changeMode} = useMode();
 
   useEffect(() => {
-    console.log(mode);
+    console.log(completedPomos);
     
-  }, [mode]);
+  }, [completedPomos]);
 
   const handleModeButtonClick = (index) => {
     setActiveButtonIndex(index);
@@ -40,7 +37,29 @@ const Card = () => {
     }
   };
 
+  const handleTimerEnd = () => {
+    // Update the completed cycles after each focus cycle
+    if (mode === 'focus') {
+      setCompletedPomos((cycles) => cycles + 1);
+    }
 
+    // Determine the next mode based on completed cycles
+    let nextModeIndex;
+
+    if (activeButtonIndex === 1 || activeButtonIndex === 2){
+     nextModeIndex = 0;
+    }
+    else if (activeButtonIndex === 0 && completedPomos < 2) {
+      // If less than 2 cycles completed, go to short break
+      nextModeIndex = 1; // short break
+    } else {
+      // If 2 cycles completed, go to long break and reset cycles
+      nextModeIndex = 2; // long break
+      setCompletedPomos(0);
+    }
+
+    handleModeButtonClick(nextModeIndex);
+  };
 
   return (
     <section className={styles.card__container}>
@@ -62,14 +81,9 @@ const Card = () => {
       <Timer 
         mode={mode}
         key={mode}
+        onTimerEnd={handleTimerEnd}
   
-      />
-
-      {/* <MusicPlayer /> */}
-
-       
-
-       
+      />     
     </section>
   )
 }

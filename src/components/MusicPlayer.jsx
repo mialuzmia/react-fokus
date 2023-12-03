@@ -9,10 +9,10 @@ import { useEffect } from "react";
 const MusicPlayer = () => {  
   const { isPlaying, handleTogglePlay } = useMusicPlayer();
  
-  useEffect(() => {
-    console.log(isPlaying);
+  // useEffect(() => {
+  //   console.log(isPlaying);
     
-  }, [isPlaying]);
+  // }, [isPlaying]);
   
 
   return (
