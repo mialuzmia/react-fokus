@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 const Timer = ({ mode, onTimerEnd }) => {
 
-  const timestamp = mode === 'focus' ? 45 : mode === 'short' ? 10 : 30;
+  const timestamp = mode === 'focus' ? 25 * 60 : mode === 'short' ? 5 * 60 : 15 * 60;
   const { minutes, seconds, toggleTimer,isRunning } = useCountdownTimer(timestamp); 
 
   useEffect(() => {
