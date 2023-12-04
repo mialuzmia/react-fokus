@@ -14,10 +14,12 @@ const Card = () => {
 
   const { mode, changeMode} = useMode();
 
-  useEffect(() => {
-    console.log(completedPomos);
+  // useEffect(() => {
+  //   console.log(completedPomos);
     
-  }, [completedPomos]);
+  // }, [completedPomos]);
+
+  console.log(localStorage);
 
   const handleModeButtonClick = (index) => {
     setActiveButtonIndex(index);
@@ -38,23 +40,22 @@ const Card = () => {
   };
 
   const handleTimerEnd = () => {
-    // Update the completed cycles after each focus cycle
+
     if (mode === 'focus') {
       setCompletedPomos((cycles) => cycles + 1);
     }
 
-    // Determine the next mode based on completed cycles
     let nextModeIndex;
 
     if (activeButtonIndex === 1 || activeButtonIndex === 2){
      nextModeIndex = 0;
     }
     else if (activeButtonIndex === 0 && completedPomos < 2) {
-      // If less than 2 cycles completed, go to short break
-      nextModeIndex = 1; // short break
+
+      nextModeIndex = 1; 
     } else {
-      // If 2 cycles completed, go to long break and reset cycles
-      nextModeIndex = 2; // long break
+
+      nextModeIndex = 2; 
       setCompletedPomos(0);
     }
 

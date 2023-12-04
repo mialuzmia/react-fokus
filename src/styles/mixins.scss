@@ -5,6 +5,22 @@
   align-items: center;
 }
 
+@mixin cardWidth{
+  @include flexCenter;
+  flex-direction: column;
+
+  width: 59rem;
+  max-width: 90%;
+
+}
+
+@mixin resetButton{
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
 @mixin respond-to($size) {
   @media (max-width: $size) {
     @content;

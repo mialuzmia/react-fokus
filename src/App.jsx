@@ -6,6 +6,7 @@ import Card from './components/Card';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import useMode from './context/ModeContext';
+import ToDoList from './components/ToDoList';
 
 function App() {
   const { mode } = useMode();
@@ -20,6 +21,7 @@ function App() {
         <MusicPlayerProvider>
           <Card />
         </MusicPlayerProvider>
+        <ToDoList /> 
         <Footer />
       </main>
 

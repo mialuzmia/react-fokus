@@ -1,4 +1,6 @@
 @use '../mixins' as *;
+@use '../variables' as *;
+
 
 
 .banner__container{
@@ -27,6 +29,7 @@
     font-style: normal;
     font-weight: 200;
     max-width: 46rem;
+    color: $white;
 
     strong{
       font-weight: 600;

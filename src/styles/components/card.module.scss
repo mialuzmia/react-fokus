@@ -3,9 +3,7 @@
 
 
 .card__container{
-  @include flexCenter;
-  flex-direction: column;
-  // gap: 3.2rem;
+ @include cardWidth;
 
   border-radius: 3.2rem;
   border: 0.2rem solid $royal-blue;
@@ -13,8 +11,10 @@
   padding: 2.4rem;
   margin: 8rem auto;
   // margin-bottom: 10rem;
-  width: 59rem;
-  max-width: 90%;
+  
+  *{
+    color: $white;
+  }
 }
 
 .card__buttonsList{

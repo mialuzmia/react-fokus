@@ -11,8 +11,9 @@
   margin: 0;
   box-sizing: border-box;
   max-width: 100%;
-  color: $secondary-color;
+
   font-size: 10px;
+ 
 
   @include respond-to(600px){
     font-size: 6px;
