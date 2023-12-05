@@ -1,0 +1,65 @@
+@use '../mixins' as *;
+@use '../variables' as *;
+
+.task__container{
+  width: 100%;
+  background-color: $grey;
+  border-radius: .8rem;
+  padding: 0 1.6rem ;
+  height: 6rem;
+  margin-bottom: 1rem;
+  @include flexCenter;
+  justify-content: space-between;
+  gap: 1rem;
+
+  img{
+    cursor: pointer;
+    width: 2.5rem;
+    
+    &:last-child{
+      width: 1.8rem;
+      &:hover{
+        filter: invert(100%);
+      }
+
+    }
+  }
+  
+  p{
+    flex: 1;
+    font-family: Montserrat;
+    font-size: 1.8rem;
+    color: $black;
+    font-weight: 600;
+    cursor: pointer;
+
+  }
+  
+}
+
+.task__editContainer{
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 1px solid $black;
+  border-radius: 50%;
+  @include flexCenter;
+  cursor: pointer;
+
+  &:hover{
+    background-color: #eeeeee;
+  }
+
+  img{
+    height: 1.8rem;
+    
+  }
+}
+
+.completed{
+  background-color: $green;
+
+  p{
+    font-style: italic;
+    text-decoration: line-through;
+  }
+}

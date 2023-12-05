@@ -6,22 +6,39 @@ import saveIcon from "../assets/icons/save.svg";
 import addIcon from "../assets/icons/add_circle.svg";
 
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
-const AddTask = () => {
+const AddTask = ({ tasks, setTasks }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAddInput = () => {
     setIsOpen(prev => !prev)
   }
 
+  const nameRef = useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newTask = {
+      name: nameRef.current.value,
+      isCompleted: false,
+      estPomos: 0,
+      completedPomos: 0,
+    }
+
+    setTasks([...tasks, newTask]);
+
+    nameRef.current.value = ''
+  }
+
   return (
     <>
-      {isOpen && <form className={styles.addtask__container}>
+      {isOpen && <form className={styles.addtask__container} onSubmit={handleSubmit}>
           <h3>Adcionando tarefa</h3>
 
           <label className={styles.addtask__input}>
-            <textarea placeholder="No que você está trabalhando?" />
+            <textarea  ref={nameRef} placeholder="No que você está trabalhando?" />
           </label>
 
           <div className={styles.addtask__buttonsContainer}>
@@ -35,7 +52,8 @@ const AddTask = () => {
                 <img src={closeIcon} alt="botão de fechar" />
                 <span>Cancelar</span>
               </button>
-              <button>
+
+              <button type="submit">
                 <img src={saveIcon} alt="botão de salvar" />
                 <span>Salvar</span>
               </button>

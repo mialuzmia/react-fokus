@@ -21,6 +21,8 @@ const Card = () => {
 
   console.log(localStorage);
 
+ 
+
   const handleModeButtonClick = (index) => {
     setActiveButtonIndex(index);
 
