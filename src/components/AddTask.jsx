@@ -16,6 +16,7 @@ const AddTask = ({ tasks, setTasks }) => {
   }
 
   const nameRef = useRef(null);
+  const estPomosRef = useRef(null)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,13 +24,15 @@ const AddTask = ({ tasks, setTasks }) => {
     const newTask = {
       name: nameRef.current.value,
       isCompleted: false,
-      estPomos: 0,
+      estPomos: estPomosRef.current.value,
       completedPomos: 0,
     }
 
     setTasks([...tasks, newTask]);
 
-    nameRef.current.value = ''
+    nameRef.current.value = '';
+    estPomosRef.current.value = 0;
+
   }
 
   return (
@@ -37,8 +40,13 @@ const AddTask = ({ tasks, setTasks }) => {
       {isOpen && <form className={styles.addtask__container} onSubmit={handleSubmit}>
           <h3>Adcionando tarefa</h3>
 
-          <label className={styles.addtask__input}>
-            <textarea  ref={nameRef} placeholder="No que você está trabalhando?" />
+
+            <textarea className={styles.addtask__input} ref={nameRef} placeholder="No que você está trabalhando?" />
+
+
+          <label >
+            <span>Pomodoros estimados:</span>
+            <input type="number"  ref={estPomosRef} defaultValue={0}/>
           </label>
 
           <div className={styles.addtask__buttonsContainer}>

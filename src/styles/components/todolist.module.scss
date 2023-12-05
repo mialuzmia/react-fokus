@@ -16,3 +16,18 @@
 }
 
 
+.todolist__finishTime{
+  width: 100%;
+  @include flexCenter;
+  margin-top: 3rem;
+  height: 5rem;
+  background-color: $timer-card-bg;
+  border-radius: 1rem;
+  border: 0.2rem solid $royal-blue;
+
+  p{
+    font-size: 1.8rem;
+    font-family: "Unbounded";
+
+  }
+}

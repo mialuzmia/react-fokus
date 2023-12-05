@@ -15,7 +15,12 @@ const Task = ({task, text, handleDelete, handleComplete }) => {
     <div className={`${styles.task__container} ${task.isCompleted ? styles.completed : ''}`}>
       <img src={task.isCompleted ? checkGreen : checkWhite}  alt="icone de check" 
       onClick={() => handleComplete(task)}/>
-      <p onClick={() => handleComplete(task)}>{task.name}</p>
+
+      <div>
+        <p onClick={() => handleComplete(task)}>{task.name}</p>
+        <span>pomos estimados: {task.estPomos} </span>
+
+      </div>
 
       {/* <div className={styles.task__editContainer} onClick={handleDelete}>
         <img src={editIcon} alt="" />

@@ -10,7 +10,7 @@
   margin-bottom: 1rem;
   @include flexCenter;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 
   img{
     cursor: pointer;
@@ -24,14 +24,28 @@
 
     }
   }
-  
+
+  div{
+    @include flexCenter;
+    flex:1;
+    justify-content: space-between;
+  }
+
   p{
-    flex: 1;
+    // flex: 1;
     font-family: Montserrat;
     font-size: 1.8rem;
     color: $black;
     font-weight: 600;
     cursor: pointer;
+
+  }
+
+  span{
+    color: $black;
+    font-size: 1.8rem;
+    // font-style: italic;
+    font-weight: 600;
 
   }
   
