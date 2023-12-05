@@ -41,12 +41,12 @@ const AddTask = ({ tasks, setTasks }) => {
           <h3>Adcionando tarefa</h3>
 
 
-            <textarea className={styles.addtask__input} ref={nameRef} placeholder="No que você está trabalhando?" />
+            <textarea required className={styles.addtask__input} ref={nameRef} placeholder="No que você está trabalhando?" />
 
 
           <label >
             <span>Pomodoros estimados:</span>
-            <input type="number"  ref={estPomosRef} defaultValue={0}/>
+            <input type="number" required ref={estPomosRef} defaultValue={0}/>
           </label>
 
           <div className={styles.addtask__buttonsContainer}>

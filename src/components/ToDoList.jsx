@@ -35,11 +35,12 @@ const ToDoList = () => {
   }
 
   const pomoDuration = [30, 30, 40];
+  
   useEffect(() => {
     const remainingPomos =  tasks.reduce((sum, task) => sum + Number(task.estPomos), 0);
     console.log(remainingPomos)
   
-    const currentTime = new Date(); // hora atual
+    const currentTime = new Date(); 
   
   let totalTimeRemaining = 0;
   for (let i = 0; i < remainingPomos; i++) {
